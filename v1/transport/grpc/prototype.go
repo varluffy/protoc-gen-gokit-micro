@@ -52,6 +52,7 @@ func (this *Prototype) GenerateFile(fileUri string, gen *protogen.Plugin, file *
 	serviceName := GetTransportName(svc.GoName)
 	gfile.P()
 	gfile.P("type ", serviceName, " struct {")
+	gfile.P(common.GetPBPackagePath(file, options).Ident("Unimplemented" + svc.GoName + "Server"))
 	for _, method := range svc.Methods {
 		gfile.P(PrototypeMethodFieldName(method.GoName), " ", common.GoKitGRPC.Ident("Handler"))
 	}

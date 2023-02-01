@@ -10,25 +10,25 @@ BUILD_NAME=${BIN_DIR}${BIN_NAME}
 GIT_TAG=`git describe --always --tag`
 
 build:
-	GOOS=linux CGO_ENABLED=0 go build -ldflags "-X 'main.BuildTime=${BUILD_TIME_DATE}' \
+	go build -ldflags "-X 'main.BuildTime=${BUILD_TIME_DATE}' \
 		-X 'main.GitHash=${GIT_HASH}' \
 		-X 'main.GitTag=${GIT_TAG}' \
 		-X 'main.GoVersion=${GO_VERSION}'" -o ${BUILD_NAME} 
 install:
-	GOOS=linux CGO_ENABLED=0 go build -ldflags "-X 'main.BuildTime=${BUILD_TIME_DATE}' \
+	go build -ldflags "-X 'main.BuildTime=${BUILD_TIME_DATE}' \
 		-X 'main.GitHash=${GIT_HASH}' \
 		-X 'main.GitTag=${GIT_TAG}' \
 		-X 'main.GoVersion=${GO_VERSION}'" -o ${BUILD_NAME} 
-	@cp ${BIN_NAME} ~/go/bin/
+	@cp ${BIN_NAME} ~/code/go/bin/
 
 all:
-	GOOS=linux CGO_ENABLED=0 go build -ldflags "-X 'main.BuildTime=${BUILD_TIME_DATE}' \
+	go build -ldflags "-X 'main.BuildTime=${BUILD_TIME_DATE}' \
 		-X 'main.GitHash=${GIT_HASH}' \
 		-X 'main.GitTag=${GIT_TAG}' \
 		-X 'main.GoVersion=${GO_VERSION}'" -o ${BUILD_NAME} 
 
 default:
-	GOOS=linux CGO_ENABLED=0 go build -ldflags "-X 'main.BuildTime=${BUILD_TIME_DATE}' \
+	go build -ldflags "-X 'main.BuildTime=${BUILD_TIME_DATE}' \
 		-X 'main.GitHash=${GIT_HASH}' \
 		-X 'main.GitTag=${GIT_TAG}' \
 		-X 'main.GoVersion=${GO_VERSION}'" -o ${BUILD_NAME} 
